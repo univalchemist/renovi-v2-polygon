@@ -1,0 +1,10 @@
+CREATE TABLE tbl_tokenmeta (
+   tokenId varchar(255) NOT NULL,
+   name varchar(255) DEFAULT NULL,
+   description text DEFAULT NULL,
+   image varchar(255) DEFAULT NULL,
+   categories varchar(255) DEFAULT NULL,
+   otherfiles text DEFAULT NULL,
+   availableOn varchar(1000) default NULL,
+   numberOfParcels int DEFAULT NULL,
+   PRIMARY KEY (tokenId) );

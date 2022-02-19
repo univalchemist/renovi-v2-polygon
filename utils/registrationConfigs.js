@@ -1,0 +1,6 @@
+{
+   publicKey: "",
+   metadataUri: "",
+   contractAddress: "",
+   metadataSchema: ""
+}
