@@ -6,7 +6,6 @@ const nftContract = new web3.eth.Contract(NFT_ABI.abi, NFT_ADDRESS);
 
 async function getIncreasedGasPrice() {
 	var gasPrice = await web3.eth.getGasPrice();
-	console.log(gasPrice);
 	gasPrice = parseInt(gasPrice * 1.15);
 	return gasPrice;
 }
@@ -22,7 +21,6 @@ export const mintNFT = async(data) => {
 		const gasPrice = await getIncreasedGasPrice();
 		const gas = await nftContract.methods.mint(price_in_wei, status, token_uri).estimateGas({from: account});
 
-		console.log(gas);
 		const result = await nftContract.methods.mint(price_in_wei, status, token_uri).send({from: account, gas, gasPrice});
 		if (result.transactionHash && result.events.Transfer.returnValues.tokenId) {
 			return result.events.Transfer.returnValues.tokenId;

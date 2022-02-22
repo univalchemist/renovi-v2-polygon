@@ -168,16 +168,16 @@ const ItemDetails = (props) => {
                             </div>
                             <Accordion>
                                 <Accordion.Item eventKey="0">
-                                    <Accordion.Header>Metaverse Details</Accordion.Header>
+                                    <Accordion.Header>Metaverse Elligible</Accordion.Header>
                                     <Accordion.Body>
                                     {item.availableOn &&
-                                    <div className="d-flex align-items-center">
-                                        <p className="mb-0">Available on:</p>
-                                        {item.availableOn.map(metaverse =>(
-                                            <img className="ml-icon" width="32" src={AVAILABLE_METAVERSES_MAPPING[metaverse]} />
+                                        <div className="d-flex align-items-center">
+                                            <p className="mb-0">Available for:</p>
+                                            {item.availableOn.map(metaverse =>(
+                                                <img className="ml-icon" width="32" src={AVAILABLE_METAVERSES_MAPPING[metaverse]} />
 
-                                        ))}
-                                    </div>
+                                            ))}
+                                        </div>
                                     }
                                     {item.numberOfParcels &&
                                         <div className="d-flex align-items-center">
