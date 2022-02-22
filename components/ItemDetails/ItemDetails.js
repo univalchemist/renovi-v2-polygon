@@ -168,7 +168,7 @@ const ItemDetails = (props) => {
                             </div>
                             <Accordion>
                                 <Accordion.Item eventKey="0">
-                                    <Accordion.Header>Metaverse Elligible</Accordion.Header>
+                                    <Accordion.Header>Metaverse Eligible</Accordion.Header>
                                     <Accordion.Body>
                                     {item.availableOn &&
                                         <div className="d-flex align-items-center">
