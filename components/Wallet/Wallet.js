@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 /** IMX integration **/
 import { Link as IMX_LINK } from '@imtbl/imx-sdk';
-import { IMX_LINK_ADDRESS } from '../../Constants';
 import { setWalletAddressAction, clearWalletAddressAction } from '../../utils/Actions';
 
 /** Metamask integration **/
