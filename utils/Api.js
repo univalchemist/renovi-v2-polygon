@@ -4,6 +4,13 @@ import { web3, formatTokenDetails } from './Helpers';
 
 const nftContract = new web3.eth.Contract(NFT_ABI.abi, NFT_ADDRESS);
 
+async function getIncreasedGasPrice() {
+	var gasPrice = await web3.eth.getGasPrice();
+	console.log(gasPrice);
+	gasPrice = parseInt(gasPrice * 1.15);
+	return gasPrice;
+}
+
 export const mintNFT = async(data) => {
 	if (!data || !data.account) {
 		createError(new Error('Please connect your wallet.'));
@@ -11,9 +18,12 @@ export const mintNFT = async(data) => {
 	try {
 		const { status, account, price, token_uri } = data;
 		const price_in_wei = web3.utils.toWei(`${price}`, "ether");
-		const gasPrice = await web3.eth.getGasPrice();
+
+		const gasPrice = await getIncreasedGasPrice();
 		const gas = await nftContract.methods.mint(price_in_wei, status, token_uri).estimateGas({from: account});
-		const result = await nftContract.methods.mint(price_in_wei, status, token_uri).send({from: account});
+
+		console.log(gas);
+		const result = await nftContract.methods.mint(price_in_wei, status, token_uri).send({from: account, gas, gasPrice});
 		if (result.transactionHash && result.events.Transfer.returnValues.tokenId) {
 			return result.events.Transfer.returnValues.tokenId;
 		} else {
@@ -31,8 +41,9 @@ export const updateNFT = async(data) => {
 	try {
 		const { id, status, account, price } = data;
 		const price_in_wei = web3.utils.toWei(`${price}`, "ether");
+		const gasPrice = await getIncreasedGasPrice();
 		const gas = await nftContract.methods.updateStatusAndPrice(id, status, price_in_wei ).estimateGas({from: account});
-		const result = await nftContract.methods.updateStatusAndPrice(id, status, price_in_wei ).send({from: account, gas});
+		const result = await nftContract.methods.updateStatusAndPrice(id, status, price_in_wei ).send({from: account, gas, gasPrice});
 
 		if (result.transactionHash) {
 			const _token = await getTokenDetailById(data.id);
@@ -59,8 +70,9 @@ export const addUser = async(data) => {
 		createError(new Error('Please connect your wallet.'));
 	}
 	try {
+		const gasPrice = await getIncreasedGasPrice();
 		const gas = await nftContract.methods.setUser(data.avatar, data.username, data.email, data.description).estimateGas({from: data.account});
-		const result = await nftContract.methods.setUser(data.avatar, data.username, data.email, data.description).send({from: data.account, gas});
+		const result = await nftContract.methods.setUser(data.avatar, data.username, data.email, data.description).send({from: data.account, gas, gasPrice});
 		if (result.transactionHash) {
 			return true;
 		} else {
@@ -122,8 +134,9 @@ export const updateTokenStatus = async(account, token_id, status, price_in_eth) 
 	}
 	try {
 		const price_in_wei = web3.utils.toWei(`${price_in_eth}`, "ether");
+		const gasPrice = await getIncreasedGasPrice();
 		const gas = await nftContract.methods.updateStatusAndPrice(token_id, STATUS_OPTION[status], price_in_wei).estimateGas({from: account.address});
-		const result = await nftContract.methods.updateStatusAndPrice(token_id, STATUS_OPTION[status], price_in_wei).send({ from: account.address, gas });
+		const result = await nftContract.methods.updateStatusAndPrice(token_id, STATUS_OPTION[status], price_in_wei).send({ from: account.address, gas, gasPrice });
 		if (result.transactionHash) {
 			const _token = await getTokenDetailById(token_id);
 			return _token;
@@ -142,7 +155,8 @@ export const buy = async(account, token_id, value_in_eth) => {
 	try {
 		const value = web3.utils.toWei(value_in_eth.toString(), 'ether');
 		const gas = await nftContract.methods.buy(token_id).estimateGas({from: account, value});
-		const result = await nftContract.methods.buy(token_id).send({from: account, value});
+		const gasPrice = await getIncreasedGasPrice();
+		const result = await nftContract.methods.buy(token_id).send({from: account, value, gasPrice});
 		if (result.transactionHash) {
 			const _token = await getTokenDetailById(token_id);
 			return _token;
@@ -170,8 +184,6 @@ export const getAllTokenMetadata = async() => {
 	});
 
 	const { data, error } = await res.json();
-
-	console.log(data[0] )
 
 	if (error) {
 		createError(new Error(error));

@@ -74,7 +74,7 @@ const ProfileForm = (props) => {
             data: false
         });
     }
-    
+
     const handleCancel = () => {
         props.onClose();
     }
