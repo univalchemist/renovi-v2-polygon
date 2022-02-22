@@ -52,8 +52,8 @@ export const FOOTER_LINKS = {
             },
             {
                 "id": 2,
-                "text": "",
-                "link": ""
+                "text": "Wallet Connect",
+                "link": "/wallet-connect"
             },
             {
                 "id": 3,
