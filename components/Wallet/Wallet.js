@@ -10,7 +10,6 @@ import { injected } from '../../utils/Connectors';
 import { useEagerConnect, useInactiveListener } from '../../utils/Hooks';
 import { shortenWalletAddress, getWalletErrorMessage } from '../../utils/Helpers';
 
-const imx_link = new IMX_LINK(IMX_LINK_ADDRESS);
 
 const Wallet = (props) => {
     const dispatch = useDispatch();
