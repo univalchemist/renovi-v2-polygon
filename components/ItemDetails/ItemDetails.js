@@ -170,7 +170,7 @@ const ItemDetails = (props) => {
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Metaverse Eligible</Accordion.Header>
                                     <Accordion.Body>
-                                    {JSON.stringify(item.availableOn) != '[]' &&
+                                    {JSON.stringify(item.availableOn) != '[]' || item.availableOn &&
                                     <>
                                         <div className="d-flex align-items-center">
                                             <p className="mb-0">Available for:</p>
