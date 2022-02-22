@@ -174,10 +174,10 @@ const ItemDetails = (props) => {
                                     <>
                                         <div className="d-flex align-items-center">
                                             <p className="mb-0">Available for:</p>
-                                            {item.availableOn.map(metaverse =>(
+                                            {/* {item.availableOn.map(metaverse =>(
                                                 <img className="ml-icon" width="32" src={AVAILABLE_METAVERSES_MAPPING[metaverse]} />
 
-                                            ))}
+                                            ))} */}
                                         </div>
 
                                         {item.numberOfParcels &&
