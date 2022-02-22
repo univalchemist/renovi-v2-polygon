@@ -19,8 +19,6 @@ const Explore = () => {
     useEffect(() => {
         const _getToken = async() => {
             const result = await API.getSaleForTokens();
-            console.log(result);
-            console.log("sss");
             dispatch({
                 type: "SET_SALE_ITEMS",
                 data: result

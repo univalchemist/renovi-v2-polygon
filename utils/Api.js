@@ -98,7 +98,6 @@ export const getSaleForTokens = async() => {
 		const _tokens = await nftContract.methods.getAllOnSale().call();
 		const tokens = [];
 		const tokenMetadata = await getAllTokenMetadata()
-		console.log(tokenMetadata);
 		for (const _token of _tokens) {
 			if (_token.tokenId > 0) tokens.push(await formatTokenDetails(_token));
 		}

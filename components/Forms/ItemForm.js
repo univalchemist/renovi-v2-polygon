@@ -42,7 +42,6 @@ const ItemForm = (props) => {
 
     useEffect(() => {
         if (props.itemData?.id) {
-            console.log(props.itemData.otherfiles)
             setData({
                 categories: props.itemData.categories,
                 name: props.itemData.name,

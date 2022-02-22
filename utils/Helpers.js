@@ -66,7 +66,6 @@ export const formatTokenDetails = async (token) => {
 		}
 		if (!error && data) {
 			const { name, description, image, categories, otherfiles, availableOn, numberOfParcels} = data;
-			console.log(availableOn)
 			token_data = {
 				...token_data,
 				name,
