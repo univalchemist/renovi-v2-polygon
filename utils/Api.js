@@ -6,7 +6,7 @@ const nftContract = new web3.eth.Contract(NFT_ABI.abi, NFT_ADDRESS);
 
 async function getIncreasedGasPrice() {
 	var gasPrice = await web3.eth.getGasPrice();
-	gasPrice = parseInt(gasPrice * 1.15);
+	gasPrice = parseInt(gasPrice * 1.20);
 	return gasPrice;
 }
 
@@ -192,6 +192,7 @@ export const getAllTokenMetadata = async() => {
 
 
 export const saveTokenMetadata = async(metadata) => {
+	console.log(metadata);
 	const res = await fetch('/api/token', {
 		body: JSON.stringify(metadata),
 		headers: { 'Content-Type': 'application/json' },
@@ -216,6 +217,7 @@ export const updateTokenMetadata = async(metadata) => {
 	const { data, error } = await res.json();
 	if (error) {
 		createError(new Error(error));
+
 	} else {
 		return data;
 	}

@@ -25,7 +25,7 @@ const ItemForm = (props) => {
         status: 1,
         image: "",
         // availableOn: "",
-        numberOfParcels: "",
+        numberOfParcels: 0,
         files: [],
     });
 
@@ -53,14 +53,18 @@ const ItemForm = (props) => {
                 numberOfParcels: props.itemData.numberOfParcels
             });
             setPreview(props.itemData.image);
-            // set values for processing
-            setAvailableOnMetaverses(props.itemData.availableOn)
-            // set preselected values for editing array
-            setAvailableOnMetaversesSelection(
-                props.itemData.availableOn.map(
-                    metaverse => { return {"name": metaverse, "value": metaverse} }
+
+            if (props.itemData.availableOn) {
+                // set values for processing
+                setAvailableOnMetaverses(props.itemData.availableOn)
+                // set preselected values for editing array
+                setAvailableOnMetaversesSelection(
+                    props.itemData.availableOn.map(
+                        metaverse => { return {"name": metaverse, "value": metaverse} }
+                    )
                 )
-            )
+            }
+
             // setOtherFiles(props.itemData.otherfiles);
         }
     }, [props.itemData]);

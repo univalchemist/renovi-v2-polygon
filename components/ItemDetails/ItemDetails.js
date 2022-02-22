@@ -170,7 +170,8 @@ const ItemDetails = (props) => {
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Metaverse Eligible</Accordion.Header>
                                     <Accordion.Body>
-                                    {item.availableOn &&
+                                    {JSON.stringify(item.availableOn) != '[]' &&
+                                    <>
                                         <div className="d-flex align-items-center">
                                             <p className="mb-0">Available for:</p>
                                             {item.availableOn.map(metaverse =>(
@@ -178,12 +179,15 @@ const ItemDetails = (props) => {
 
                                             ))}
                                         </div>
+
+                                        {item.numberOfParcels &&
+                                            <div className="d-flex align-items-center">
+                                                <p className="mt-3">Number of parcels: {item.numberOfParcels}</p>
+                                            </div>
+                                        }
+                                    </>
                                     }
-                                    {item.numberOfParcels &&
-                                        <div className="d-flex align-items-center">
-                                            <p className="mt-3">Number of parcels: {item.numberOfParcels}</p>
-                                        </div>
-                                    }
+
                                     </Accordion.Body>
                                 </Accordion.Item>
                                 <Accordion.Item eventKey="1">
