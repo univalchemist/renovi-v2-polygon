@@ -54,6 +54,7 @@
     "web3": "^1.5.2"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.2.7",
     "@nomiclabs/hardhat-waffle": "^2.0.2"
   }
 }
