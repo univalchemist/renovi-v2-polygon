@@ -3181,3 +3181,11 @@ p.item-description {
 .multiSelectContainer li:hover {
   background: var(--primary-color)!important;
 }
+
+a.social-media img {
+  transition: 0.2s all;
+}
+
+a.social-media img:hover {
+  transform: scale(1.2, 1.2);
+}
