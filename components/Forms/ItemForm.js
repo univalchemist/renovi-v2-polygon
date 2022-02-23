@@ -93,7 +93,6 @@ const ItemForm = (props) => {
     }
 
     const handleChange = (e) => {
-        console.log(e)
         setData({
             ...data,
             [e.target.name]: e.target.value
