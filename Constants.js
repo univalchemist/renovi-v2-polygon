@@ -6,7 +6,7 @@ export const NETWORK_CHAIN_ID = parseInt(process.env.NEXT_PUBLIC_NETWORK_CHAIN_I
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL
 
-export const HOMEPAGE_EXPLORER_NUMBER = 12;
+export const HOMEPAGE_EXPLORER_NUMBER = 32;
 export const ITEMS_PER_PAGE = 3;
 
 export const STATUS_OPTION = {
