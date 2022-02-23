@@ -22,12 +22,14 @@ export const mintNFT = async(data) => {
 		const gas = await nftContract.methods.mint(price_in_wei, status, token_uri).estimateGas({from: account});
 
 		const result = await nftContract.methods.mint(price_in_wei, status, token_uri).send({from: account, gas, gasPrice});
+		console.log()
 		if (result.transactionHash && result.events.Transfer.returnValues.tokenId) {
 			return result.events.Transfer.returnValues.tokenId;
 		} else {
 			createError(new Error('Something is went wrong! Please try again later.'));
 		}
 	} catch (e) {
+		console.log("error", e);
 		createError(e);
 	}
 }

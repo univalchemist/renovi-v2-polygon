@@ -2,7 +2,7 @@ const axios = require('axios');
 const FormData = require('form-data');
 
 const pinata_base_uri = "https://api.pinata.cloud"
-const pinata_gateway_uri = "https://gateway.pinata.cloud/ipfs/"
+const pinata_gateway_uri = "https://renovi.mypinata.cloud/ipfs/"
 const key = process.env.NEXT_PUBLIC_PINATA_API_KEY;
 const secret = process.env.NEXT_PUBLIC_PINATA_SECRET_KEY;
 
