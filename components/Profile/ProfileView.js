@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 const ProfileView = (props) => {
 
     const data = useSelector(state => state.myProfile);
-    console.log(data)
 
     return (
         <>

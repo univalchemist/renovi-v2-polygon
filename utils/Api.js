@@ -6,7 +6,7 @@ const nftContract = new web3.eth.Contract(NFT_ABI.abi, NFT_ADDRESS);
 
 async function getIncreasedGasPrice() {
 	var gasPrice = await web3.eth.getGasPrice();
-	gasPrice = parseInt(gasPrice * 1.12);
+	gasPrice = parseInt(gasPrice * 1.16);
 	return gasPrice;
 }
 
@@ -75,9 +75,7 @@ export const addUser = async(data) => {
 		const result = await nftContract.methods.setUser(data.avatar, data.username, data.email, data.description).send({from: data.account, gas, gasPrice}, 
 			function(error, result) {
 			if (error) {
-			  console.log('error: ' + error);
-			} else {
-				console.log('success: ' + result);
+			  console.log('error: ' + error.message);
 			}
 		  });
 		if (result.transactionHash) {
