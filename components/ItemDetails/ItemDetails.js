@@ -170,14 +170,14 @@ const ItemDetails = (props) => {
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Metaverse Eligible</Accordion.Header>
                                     <Accordion.Body>
-                                    {JSON.stringify(item.availableOn) != '[]' || item.availableOn &&
+                                    {JSON.stringify(item.availableOn) != '[]' && item.availableOn &&
                                     <>
                                         <div className="d-flex align-items-center">
                                             <p className="mb-0">Available for:</p>
-                                            {/* {item.availableOn.map(metaverse =>(
+                                            {item.availableOn.map(metaverse =>(
                                                 <img className="ml-icon" width="32" src={AVAILABLE_METAVERSES_MAPPING[metaverse]} />
 
-                                            ))} */}
+                                            ))}
                                         </div>
 
                                         {item.numberOfParcels &&
