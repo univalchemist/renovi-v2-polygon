@@ -65,7 +65,7 @@ const ItemForm = (props) => {
                 )
             }
 
-            // setOtherFiles(props.itemData.otherfiles);
+            setOtherFiles(props.itemData.otherfiles);
         }
     }, [props.itemData]);
 
