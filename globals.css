@@ -3136,6 +3136,58 @@ p.item-description {
   margin-left: 10px;
 }
 
+.text-box {
+  width: fit-content;
+  padding: 10px;
+  border-left: 10px solid var(--primary-color);
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 0 3px rgba(225, 225, 225, 0.2);
+  margin-right: 3rem;
+}
+
+.item-box {
+  width: fit-content;
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 0 3px rgba(225, 225, 225, 0.2);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.description-box {
+  max-height: 200px;
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 0 3px rgba(225, 225, 225, 0.2);
+  overflow-y: scroll;
+  margin: 20px 0;
+  padding: 1rem;
+}
+.creator-description{
+  color: var(--grey-color);
+  font-size: 10px;
+  margin: 0;
+  margin-top: 6px;
+}
+
+.description-box::-webkit-scrollbar{
+  width: 3px;
+}
+
+.description-box::-webkit-scrollbar-button {
+  height: 20px;
+}
+
+/* Handle */
+.description-box::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+  height: 10px;
+}
+
+/* Handle on hover */
+.description-box::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color-hover);
+}
+
 .accordion-item {
   box-shadow: 0;
   background-color: var(--primary-bg-color);
@@ -3188,4 +3240,18 @@ a.social-media img {
 
 a.social-media img:hover {
   transform: scale(1.2, 1.2);
+}
+
+.zoom-in {
+  cursor: zoom-in;
+}
+
+.price-description {
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 768px) {
+  .price-description {
+    flex-direction: column;
+  }
 }

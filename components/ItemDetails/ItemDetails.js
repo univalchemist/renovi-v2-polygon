@@ -12,6 +12,9 @@ import ThreeViewer from '../ThreeViewer';
 import * as API from '../../utils/Api';
 import { handleDownload } from '../../utils/FileDownloader';
 import Accordion from 'react-bootstrap/Accordion'
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+
 
 
 const ItemDetails = (props) => {
@@ -159,77 +162,99 @@ const ItemDetails = (props) => {
             <section className="item-details-area">
                 <div className="container">
                     <div className="row justify-content-between">
-                        <div className="col-12 col-sm-4">
-                            <img src={item.image} className="w-100" alt="" />
-                            <div className="w-100">
-                            {
-                                item.otherfiles?.length > 0 && renderOtherFilesView()
-                            }
-                            </div>
-                            <Accordion>
-                                <Accordion.Item eventKey="0">
-                                    <Accordion.Header>Metaverse Eligible</Accordion.Header>
-                                    <Accordion.Body>
-                                    {JSON.stringify(item.availableOn) != '[]' && item.availableOn &&
-                                    <>
-                                        <div className="d-flex align-items-center">
-                                            <p className="mb-0">Available for:</p>
-                                            {item.availableOn.map(metaverse =>(
-                                                <img className="ml-icon" width="32" src={AVAILABLE_METAVERSES_MAPPING[metaverse]} />
+                        <div className="col-md-10 col-12 text-center mx-auto">
+                        <Zoom className="zoom-in">
+                            <img src={item.image} className="w-100 zoom-in" alt="" />
+                        </Zoom>
+                        </div>
+                        <div className="col-md-10 col-12 mx-auto">
+                            <div className="row">
+                            <div className="col-12 col-sm-8">
+                                    {/* Content */}
+                                    <div className="content mt-5 mt-lg-0">
 
-                                            ))}
+                                        <div className="d-flex price-description w-100">
+
+                                            <div className="text-box mr-5">
+                                                <h4 className="m-0 mb-3">{item.name}</h4>
+                                                <p>Price: <span className="text-white">{`${item.price_in_eth} MATIC`}</span></p>
+                                            </div>
+                                            <div className="item-actions-wrapper">
+                                                {
+                                                    (item.status =="1" && item.owner?.address !== stateWallet.address) && (
+                                                        stateWallet.address? (
+                                                            <a className={`btn btn-primary-alt px-5 py-3 mt-4 btn-lg ${processing? "processing":""}`} onClick={()=>handleBuy()}>Buy Now</a>
+                                                        ):(
+                                                            <Link href="/wallet-connect"><a className="btn btn-primary-alt px-5 py-3 mt-4 btn-lg">Connect Wallet</a></Link>
+                                                        )
+                                                    )
+                                                }
+                                                {
+                                                    (item.owner?.address === stateWallet.address && item.creator?.address === stateWallet.address) && (
+                                                        <a className={`btn btn-primary-alt px-5 py-3 mt-4 btn-lg`} onClick={()=>handleEdit()}>Edit</a>
+                                                    )
+                                                }
+                                            </div>
                                         </div>
 
-                                        {item.numberOfParcels &&
-                                            <div className="d-flex align-items-center">
-                                                <p className="mt-3">Number of parcels: {item.numberOfParcels}</p>
-                                            </div>
-                                        }
-                                    </>
-                                    }
+                                        <h3 className="mb-3 mt-5">Description</h3>
+                                        <div className="description-box">
+                                            <p className="text-white mt-3">{item.description}</p>
+                                        </div>
 
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                                <Accordion.Item eventKey="1">
-                                    <Accordion.Header>Ownership Details</Accordion.Header>
-                                    <Accordion.Body>
-                                        <p className="mb-0">Creator</p>
-                                        <UserItem avatar={item.creator?.avatar} name={item.creator?.username || item.creator?.address} />
-                                        <p className="mb-0">Owner</p>
-                                        <UserItem avatar={item.owner?.avatar} name={item.owner?.username || item.owner?.address} />
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            </Accordion>
-                        </div>
-                        <div className="col-12 col-sm-8">
-                            {/* Content */}
-                            <div className="content mt-5 mt-lg-0">
-                                <h4 className="m-0 mb-3">{item.name}</h4>
-                                {
-                                    item.status =="sale"? (
-                                        <p>On sale for <span className="text-white">{`${item.price_in_eth} ETH`}</span></p>
-                                    ):(
-                                        <p>Price: <span className="text-white">{`${item.price_in_eth} MATIC`}</span></p>
-                                    )
-                                }
+                                    </div>
+                                </div>
+                                <div className="col-12 col-md-4">
+                                    <Accordion>
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>Metaverse Details</Accordion.Header>
+                                            <Accordion.Body>
+                                            {JSON.stringify(item.availableOn) != '[]' && item.availableOn &&
+                                            <>
+                                                <div className="d-flex align-items-center">
+                                                    <p className="mb-0">Available for:</p>
+                                                    {item.availableOn.map(metaverse =>(
+                                                        <img className="ml-icon" width="32" src={AVAILABLE_METAVERSES_MAPPING[metaverse]} />
 
-                                <p className="text-white mt-3">{item.description}</p>
+                                                    ))}
+                                                </div>
 
-                                <div className="item-actions-wrapper">
-                                {
-                                    (item.status =="1" && item.owner?.address !== stateWallet.address) && (
-                                        stateWallet.address? (
-                                            <a className={`btn btn-primary-alt px-5 py-3 mt-4 btn-lg ${processing?"processing":""}`} onClick={()=>handleBuy()}>Buy Now</a>
-                                        ):(
-                                            <Link href="/wallet-connect"><a className="btn btn-primary-alt px-5 py-3 mt-4 btn-lg">Connect Wallet</a></Link>
-                                        )
-                                    )
-                                }
-                                {
-                                    (item.owner?.address === stateWallet.address && item.creator?.address === stateWallet.address) && (
-                                        <a className={`btn btn-primary-alt px-5 py-3 mt-4 btn-lg`} onClick={()=>handleEdit()}>Edit</a>
-                                    )
-                                }
+                                                {item.numberOfParcels &&
+                                                    <div className="d-flex align-items-center">
+                                                        <p className="mt-3">Number of parcels: {item.numberOfParcels}</p>
+                                                    </div>
+                                                }
+                                            </>
+                                            }
+
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion>
+                                            <Accordion.Item eventKey="1">
+                                                <Accordion.Header>3D Viewer/Download</Accordion.Header>
+                                                <Accordion.Body>
+                                                    {item.otherfiles?.length > 0 ?
+                                                        renderOtherFilesView()
+                                                    :
+                                                        <p>No info provided from creator</p>
+                                                    }
+                                                </Accordion.Body>
+                                            </Accordion.Item>
+                                        </Accordion>
+
+                                        <Accordion.Item eventKey="1">
+                                            <Accordion.Header>Ownership Details</Accordion.Header>
+                                            <Accordion.Body>
+                                                <p className="mb-0">Creator</p>
+                                                <UserItem avatar={item.creator?.avatar} name={item.creator?.username || item.creator?.address} />
+                                                <p className="mb-0 pb-0">About Creator</p>
+                                                <p className="creator-description">{item.creator?.description}</p>
+                                                <p className="mb-0">Owner</p>
+                                                <UserItem avatar={item.owner?.avatar} name={item.owner?.username || item.owner?.address} />
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
                                 </div>
                             </div>
                         </div>
