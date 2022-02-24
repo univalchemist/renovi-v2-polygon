@@ -173,13 +173,13 @@ const ItemDetails = (props) => {
                                     {/* Content */}
                                     <div className="content mt-5 mt-lg-0">
 
-                                        <div className="d-flex w-100">
+                                        <div className="d-flex price-description w-100">
 
                                             <div className="text-box mr-5">
                                                 <h4 className="m-0 mb-3">{item.name}</h4>
                                                 <p>Price: <span className="text-white">{`${item.price_in_eth} MATIC`}</span></p>
                                             </div>
-                                            <div className="item-actions-wrapper item-box">
+                                            <div className="item-actions-wrapper">
                                                 {
                                                     (item.status =="1" && item.owner?.address !== stateWallet.address) && (
                                                         stateWallet.address? (

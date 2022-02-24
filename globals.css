@@ -3155,8 +3155,11 @@ p.item-description {
 
 .description-box {
   max-height: 200px;
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 0 3px rgba(225, 225, 225, 0.2);
   overflow-y: scroll;
   margin: 20px 0;
+  padding: 1rem;
 }
 .creator-description{
   color: var(--grey-color);
@@ -3241,4 +3244,14 @@ a.social-media img:hover {
 
 .zoom-in {
   cursor: zoom-in;
+}
+
+.price-description {
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 768px) {
+  .price-description {
+    flex-direction: column;
+  }
 }
