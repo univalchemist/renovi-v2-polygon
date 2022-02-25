@@ -131,10 +131,9 @@ const ItemDetails = (props) => {
                 } else {
                     return (
                         <>
-                            <a download href={_file.path} key={idx} className="btn btn-primary-alt m-2" target="_blank">Download {_file.ext.toUpperCase()}</a>
-                            {(item.owner?.address === stateWallet.address) &&
-                                download_button
-                            }
+                        {(item.owner?.address === stateWallet.address) &&
+                            download_button
+                        }
                         </>
                     );
                 }
