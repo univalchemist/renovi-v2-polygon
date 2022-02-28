@@ -16,6 +16,7 @@ const Header = () => {
     const [showMenuModal, setShowMenuModal] = useState(false);
     const [showSearchModal, setShowSearchModal] = useState(false);
     const stateWallet = useSelector(state => state.wallet);
+    console.log(stateWallet)
 
     useEffect(() => {
         if (localStorage && !stateWallet?.address) {
@@ -59,10 +60,10 @@ const Header = () => {
                         {/* Navbar */}
                         <ul className="navbar-nav items ms-auto">
                             <li className="nav-item dropdown">
-                                <Link href="https://my.renovi.io"><a target="_blank" className="nav-link text-white">Home</a></Link>
+                                <Link href="/explore"><a className="nav-link text-white">Explore</a></Link>
                             </li>
                             <li className="nav-item dropdown">
-                                <Link href="/explore"><a className="nav-link text-white">Explore</a></Link>
+                                <Link href="https://my.renovi.io"><a target="_blank" className="nav-link text-white">Info</a></Link>
                             </li>
                             {
                                 stateWallet.address && (

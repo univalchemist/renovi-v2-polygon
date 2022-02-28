@@ -77,8 +77,8 @@ export const FOOTER_LINKS = {
             },
             {
                 "id": 2,
-                "text": "",
-                "link": ""
+                "text": "Terms & Conditions",
+                "link": "/terms-conditions.pdf"
             }
         ]
     },
