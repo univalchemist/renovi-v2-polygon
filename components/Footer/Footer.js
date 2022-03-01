@@ -72,7 +72,7 @@ const Footer = () => {
                             <a className="social-media "href="https://t.me/RenoviNFTGroup"><img className="mx-2" width="30px" src="/images/icons/telegram.svg" alt="telegram icon" /></a>
                             <a className="social-media" href="https://twitter.com/RenoviNFT"><img className="mx-2" width="30px" src="/images/icons/twitter.svg" alt="twitter icon" /></a>
                             <a className="social-media" href="https://www.instagram.com/renovinft/"><img className="mx-2" width="30px" src="/images/icons/ig.svg" alt="instagram icon" /></a>
-                            <a className="social-media" href="https://discord.gg/3rkpUK6d"><img className="mx-2" width="30px" src="/images/icons/discord.svg" alt="discord icon" /></a>
+                            <a className="social-media" href="https://discord.gg/pBtQyqVN"><img className="mx-2" width="30px" src="/images/icons/discord.svg" alt="discord icon" /></a>
                             <div className="copyright-area d-flex flex-wrap justify-content-center text-center py-4">
                                 <p className="fw-normal text-secondary-alt">Renovi ©  {(new Date().getFullYear())} | Site by 
                                     <a href="https://mojodigital.io" className="ps-2" target="_blank">Mojo Digital</a>
