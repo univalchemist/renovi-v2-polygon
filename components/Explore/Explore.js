@@ -35,7 +35,12 @@ const Explore = () => {
 
     useEffect(() => {
         // setData(stateData);
-        setData(stateData.slice(0, HOMEPAGE_EXPLORER_NUMBER));
+        var filteredTokens = stateData.filter(function(el){
+            // console.log(el.creator.address)
+            return el.creator.address !== "0xB481b2cecf769Dd1F05403F984321bF09Ac9A572" && el.creator.address !== "0xbdFA9774Cd5FfaeFA2757E7613a71FAd8a84056f";
+        });
+        // console.log(filteredTokens);
+        setData(filteredTokens.slice(0, HOMEPAGE_EXPLORER_NUMBER));
     }, [stateData])
 
     useEffect(() => {
